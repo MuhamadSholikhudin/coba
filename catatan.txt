@@ -1,0 +1,255 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS D:\laravel\coba> thinker
+thinker : The term 'thinker' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling o
+if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ thinker
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (thinker:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS D:\laravel\coba> php artisan make:model -m Post
+Model created successfully.
+Created Migration: 2021_12_18_171156_create_posts_table
+PS D:\laravel\coba> php artisan migrate:refresh
+Rolling back: 2019_12_14_000001_create_personal_access_tokens_table
+Rolled back:  2019_12_14_000001_create_personal_access_tokens_table (641.02ms)
+Rolling back: 2019_08_19_000000_create_failed_jobs_table
+Rolled back:  2019_08_19_000000_create_failed_jobs_table (471.89ms)
+Rolling back: 2014_10_12_100000_create_password_resets_table
+Rolled back:  2014_10_12_100000_create_password_resets_table (856.55ms)
+Rolling back: 2014_10_12_000000_create_users_table
+Rolled back:  2014_10_12_000000_create_users_table (449.87ms)
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (1,170.16ms)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (2,252.98ms)
+Migrating: 2019_08_19_000000_create_failed_jobs_table
+Migrated:  2019_08_19_000000_create_failed_jobs_table (1,089.72ms)
+Migrating: 2019_12_14_000001_create_personal_access_tokens_table
+Migrated:  2019_12_14_000001_create_personal_access_tokens_table (2,264.51ms)
+Migrating: 2021_12_18_171156_create_posts_table
+
+   Error 
+
+  Call to a member function nullabel() on null
+
+  at D:\laravel\coba\database\migrations\2021_12_18_171156_create_posts_table.php:21
+     17▕             $table->id();
+     18▕             $table->string('title');
+     19▕             $table->text('excerpt');
+     20▕             $table->text('body');
+  ➜  21▕             $table->timestamps('published')->nullabel();
+     22▕             $table->timestamps();
+     23▕         });
+     24▕     }
+     25▕
+
+  1   D:\laravel\coba\vendor\laravel\framework\src\Illuminate\Database\Schema\Builder.php:227
+      CreatePostsTable::{closure}(Object(Illuminate\Database\Schema\Blueprint))
+
+  2   D:\laravel\coba\vendor\laravel\framework\src\Illuminate\Support\helpers.php:263
+      Illuminate\Database\Schema\Builder::Illuminate\Database\Schema\{closure}(Object(Illuminate\Database\Schema\Blueprint))
+PS D:\laravel\coba> php artisan migrate:refresh
+Rolling back: 2019_12_14_000001_create_personal_access_tokens_table
+Rolled back:  2019_12_14_000001_create_personal_access_tokens_table (505.17ms)
+Rolling back: 2019_08_19_000000_create_failed_jobs_table
+Rolled back:  2019_08_19_000000_create_failed_jobs_table (1,095.17ms)
+Rolling back: 2014_10_12_100000_create_password_resets_table
+Rolled back:  2014_10_12_100000_create_password_resets_table (759.52ms)
+Rolling back: 2014_10_12_000000_create_users_table
+Rolled back:  2014_10_12_000000_create_users_table (570.39ms)
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (1,138.07ms)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (936.08ms)
+Migrating: 2019_08_19_000000_create_failed_jobs_table
+Migrated:  2019_08_19_000000_create_failed_jobs_table (947.13ms)
+Migrating: 2019_12_14_000001_create_personal_access_tokens_table
+Migrated:  2019_12_14_000001_create_personal_access_tokens_table (1,886.50ms)
+Migrating: 2021_12_18_171156_create_posts_table
+Migrated:  2021_12_18_171156_create_posts_table (438.54ms)
+PS D:\laravel\coba> php artisan tinker
+Psy Shell v0.10.8 (PHP 8.0.10 — cli) by Justin Hileman
+>>> $post = new Post
+[!] Aliasing 'Post' to 'App\Models\Post' for this Tinker session.
+=> App\Models\Post {#3452}
+>>> $post->title = 'Judul Pertama'
+=> "Judul Pertama"
+>>> $post->excerpt = '1 aku adalah lorem ipsum1 '
+=> "1 aku adalah lorem ipsum1 "
+>>> $post->body = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+PHP Parse error: Syntax error, unexpected T_STRING on line 1
+>>> $post->body = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+=> "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+>>> $post->save();
+=> true
+>>> $post = new Post
+=> App\Models\Post {#4244}
+>>> $post->title = 'Judul Kedua'
+=> "Judul Kedua"
+>>> $post->excerpt = '2 aku adalah lorem ipsum 2 '
+=> "2 aku adalah lorem ipsum 2 "
+>>> $post->body = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+=> "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+>>> $post->save();
+=> true
+>>> Post::first()
+=> App\Models\Post {#3773
+     id: 1,
+     title: "Judul Pertama",
+     excerpt: "1 aku adalah lorem ipsum1 ",
+     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
+the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+     published_at: "2021-12-19 00:23:44",
+     created_at: "2021-12-18 17:23:44",
+     updated_at: "2021-12-18 17:23:44",
+   }
+>>> Post::pluck('title')
+=> Illuminate\Support\Collection {#3460
+     all: [
+       "Judul Pertama",
+       "Judul Kedua",
+     ],
+   }
+>>> Post::find(20
+... )
+=> null
+>>> Post::find(2
+...
+... )
+=> App\Models\Post {#3446
+     id: 2,
+     title: "Judul Kedua",
+     excerpt: "2 aku adalah lorem ipsum 2 ",
+     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
+the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+     published_at: "2021-12-19 00:26:41",
+     created_at: "2021-12-18 17:26:41",
+     updated_at: "2021-12-18 17:26:41",
+   }
+>>> $post = new Post
+=> App\Models\Post {#3452}
+>>> $post->title = 'Judul ke tiga'
+=> "Judul ke tiga"
+>>> $post->excerpt = '3 aku adalah lorem ipsum 3 '
+=> "3 aku adalah lorem ipsum 3 "
+>>> $post->body = '<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text
+ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>'
+=> "<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the
+1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer
+took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>"
+>>> $post->save();
+...
+...
+... 0
+... )
+... ;
+... cls
+...
+PS D:\laravel\coba> php artisan tinker
+Psy Shell v0.10.8 (PHP 8.0.10 — cli) by Justin Hileman
+>>> Post::create([
+...   'title' => 'Judul Keempat',
+...  ' excerpt' => "2 aku adalah lorem ipsum 2 ",
+...  'body' => Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
+PHP Parse error: Syntax error, unexpected T_STRING, expecting ',' or ']' or ')' on line 4
+>>> the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+PHP Parse error: Syntax error, unexpected T_LNUMBER on line 1
+>>> ])
+PHP Parse error: Syntax error, unexpected ']' on line 1
+>>> Post::create([
+...   'title' => 'Judul Keempat',
+...  ' excerpt' => '2 aku adalah lorem ipsum 2 ',
+...  'body' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+... ])
+[!] Aliasing 'Post' to 'App\Models\Post' for this Tinker session.
+Illuminate\Database\QueryException with message 'SQLSTATE[HY000]: General error: 1364 Field 'excerpt' doesn't have a default value (SQL: insert into `posts` (`title`, `body`, `updated_at`, `created_at`) values (Judul Keempat, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+including versions of Lorem Ipsum., 2021-12-18 17:53:41, 2021-12-18 17:53:41))'
+>>> Post::pluck('title')
+=> Illuminate\Support\Collection {#4180
+     all: [
+       "Judul Pertama",
+       "Judul Kedua",
+       "Judul ke tiga",
+     ],
+   }
+>>>
+PS D:\laravel\coba> php artisan tinker
+Psy Shell v0.10.8 (PHP 8.0.10 — cli) by Justin Hileman
+>>>
+>>>
+>>>    }
+>>>
+PS D:\laravel\coba> php artisan tinker
+Psy Shell v0.10.8 (PHP 8.0.10 — cli) by Justin Hileman
+>>> Post::create([
+...   'title' => 'Judul Keempat',
+...   'excerpt' => '2 aku adalah lorem ipsum 2 ',
+...   'body' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+... ])
+[!] Aliasing 'Post' to 'App\Models\Post' for this Tinker session.
+=> App\Models\Post {#4332
+     title: "Judul Keempat",
+     excerpt: "2 aku adalah lorem ipsum 2 ",
+     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
+the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+     updated_at: "2021-12-18 17:57:34",
+     created_at: "2021-12-18 17:57:34",
+     id: 4,
+   }
+>>> Post::create([
+  'title' => 'Judul Keempat',
+  'excerpt' => '2 aku adalah lorem ipsum 2 ',
+  'b
+>>>
+>>>
+>>> )
+PHP Parse error: Syntax error, unexpected ')' on line 1
+>>> ])
+PHP Parse error: Syntax error, unexpected ']' on line 1
+>>> Post::pluck('title')
+=> Illuminate\Support\Collection {#3453
+     all: [
+       "Judul Pertama",
+       "Judul Kedua",
+       "Judul ke tiga",
+       "Judul Keempat",
+     ],
+   }
+>>> Post::create([
+...   'title' => 'Judul Lima',
+...   'excerpt' => '5 aku adalah lorem ipsum 5 ',
+...   'body' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+... ])
+=> App\Models\Post {#3462
+     title: "Judul Lima",
+     excerpt: "5 aku adalah lorem ipsum 5 ",
+     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
+the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+     updated_at: "2021-12-18 18:01:09",
+     created_at: "2021-12-18 18:01:09",
+     id: 5,
+   }
+>>> $post->find(3)->update(['title' => 'Judul ke tiga berubah'])
+<warning>PHP Warning:  Undefined variable $post in Psy Shell code on line 1</warning>
+PHP Error:  Call to a member function find() on null in Psy Shell code on line 1
+>>> Post::find(3)->update(['title' => 'Judul ke tiga berubah'])
+=> true
+>>> Post::where('title', 'Judul ke tiga berubah')->update(['title' => 'Judul ke tiga ', 'excerpt'=> 'aku adalah lorem ipsum 3'])
+=> 1
+>>> Post::create([->update(['title' => 'Judul ke tiga berubah'])
+  'title' => 'Judul Lima',
+  'excerpt' => '5 aku adalah lorem ipsum 5 ',
+  'bPost::create([
+  'title' => 'Judul Keempat',
+  'excerpt' => '2 aku adalah lorem ipsum 2 ',
+  'b$user = new App\Models\User;
+>>>
