@@ -13,5 +13,12 @@ class Category extends Model
     // protected $fillable= ['title', 'excerpt', 'body'];
 
     //  boleh diisi kecuali yang di guarded
-    //protected $guarded= ['id'];
+    protected $guarded= ['id'];
+public function category(){
+return $this->belongTo(Category::class);
+
+}
+
+
+
 }
