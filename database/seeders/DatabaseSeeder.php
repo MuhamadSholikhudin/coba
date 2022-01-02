@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,19 +16,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(5)->create();
+        User::factory(5)->create();
+
         // \App\Models\Post::factory(10)->create();
         // \App\Models\Category::factory(10)->create();
 
         // User::factory(5)->craeted();
 
-        // User::created([
-        //     'name' => 'Muhamad Sholikhudin'
+        Category::created([
+            'name' => 'Web Progamming',
+            'slug' => 'Web-Progamming'
+        ]);
+        // Category::created([
+        //     'name' => 'Web Progamming',
+        //     'slug' => 'web-progamming',
         // ]);
-        // DB::table('users')->insert([
-        //     'name' => Str::random(10),
-        //     'email' => Str::random(10) . '@gmail.com',
-        //     'password' => Hash::make('password'),
-        // ]);
+        Category::created([
+            'name' => 'Personal',
+            'slug' => 'personal'
+        ]);
+        Post::factory(5)->create();
     }
 }

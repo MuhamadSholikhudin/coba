@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Post_;
+use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -33,7 +34,7 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/blog', [PostController::class, 'index']
+Route::get('/blog', [PostController::class, 'blog']
     // $blog_posts = [
     //     [
     //         "judul" => "lorem 1",
@@ -55,6 +56,7 @@ Route::get('/blog', [PostController::class, 'index']
     // ]);
 
 );
+
 
 // Route::get('blog/{slug}', function ($slug) {
 
@@ -88,6 +90,8 @@ Route::get('/blog', [PostController::class, 'index']
 // });
 Route::get('/blog/{post:slug}', [PostController::class, 'show']);
 
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/post/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/coba', function () {
 
@@ -109,13 +113,24 @@ Route::get('/categories', function (Category $categori) {
         ]
     );
 });
-Route::get('/categories/{category:slug}', function (Category $categori) {
 
-    return view('categoriy', 
+Route::get('/categories/{category:slug}', function (Category $category) {
+
+    return view('category',
         [
             "title" => $category->name,
             "posts" => $category->posts,
-"category" =>  $category->name
+            "category" =>  $category->name
+        ]
+    );
+});
+
+Route::get('/author/{author:username}', function (User $author) {
+
+    return view('posts',
+        [
+            "title" => 'User Post',
+            "posts" => $author->posts
         ]
     );
 });

@@ -14,9 +14,10 @@ class Category extends Model
 
     //  boleh diisi kecuali yang di guarded
     protected $guarded = ['id'];
-    public function category()
+
+    public function posts()
     {
-        return $this->belongTo(Category::class);
+        return $this->hasMany(Post::class);
     }
 
 

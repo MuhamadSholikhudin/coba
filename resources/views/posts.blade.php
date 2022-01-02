@@ -1,16 +1,21 @@
+{{-- @dd($blog) --}}
+
+
 @extends('layouts.main')
 
 @section('container')
+@foreach($posts as $post)
 
-  <article>
-
-<p> By <a href="/categories/{{ $post->category->slug }}"> {{ $post->category->name }}</a> </p>
-      <h2>Judul : {{ $blog->title }}</h2>
-      <a href="/blog/ {{ $blog->id }}"> {{ $blog->id }} </a>
-      <h5>Penulis : {!! $blog['penulis'] !!}</h5>
-      <h6>Isinya : {!!  $blog->body !!}</h6>
-  </article>
-
-  <a href="/blog">Kembali</a>
+  <div class="mb-4">
+    <article class="mb-5 border-bottom pb-4">
+      <h2><a href="/post/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a> </h2>
+      <p>
+        By. <a href="/author/{{ $post->author->username }}" class="text-decoration-none"> {{ $post->author->name }} </a> 
+        in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none"> {{ $post->category->name }} </a>
+      </p>
+      <p> {{ $post->excerpt }}</p>
+      <a href="/post/{{ $post->slug }}" class="text-decoration-none"> {{ $post->slug }} </a>
+    </article>
+  </div>
+@endforeach
 @endsection
-

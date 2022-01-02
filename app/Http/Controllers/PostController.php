@@ -10,10 +10,17 @@ class PostController extends Controller
 {
     //method pulbic
     public function index(){
+        return  view('posts', [
+            "title" => "Blog",
+            "author" => "Sholikhudin",
+            "posts" => Post::latest()->get()
+        ]);
+    }
+    public function blog(){
         return  view('blog', [
             "title" => "Blog",
             "author" => "Sholikhudin",
-            "blog" => Post::all()
+            "post" => Post::latest()->get()
         ]);
     }
 
@@ -25,7 +32,7 @@ class PostController extends Controller
             "author" => "Sholikhudin",
 
             // "blog" => Post::find($post)
-            "blog" => $post
+            "post" => $post
         ]);
     }
 }
