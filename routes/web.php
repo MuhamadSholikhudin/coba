@@ -109,6 +109,7 @@ Route::get('/categories', function (Category $categori) {
     return view('categories', 
         [
             "title" => 'Post categories',
+            "active" => "categories",
             "categories" => Category::all()
         ]
     );
@@ -116,10 +117,11 @@ Route::get('/categories', function (Category $categori) {
 
 Route::get('/categories/{category:slug}', function (Category $category) {
 
-    return view('category',
+    return view('posts',
         [
             "title" => $category->name,
-            "posts" => $category->posts,
+            "active" => "categories",
+            "posts" => $category->posts->load('category', 'author'),
             "category" =>  $category->name
         ]
     );
@@ -130,7 +132,8 @@ Route::get('/author/{author:username}', function (User $author) {
     return view('posts',
         [
             "title" => 'User Post',
-            "posts" => $author->posts
+            "active" => "categories",
+            "posts" => $author->posts->load('category', 'author')
         ]
     );
 });

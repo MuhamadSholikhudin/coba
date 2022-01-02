@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -11,7 +12,8 @@ class PostController extends Controller
     //method pulbic
     public function index(){
         return  view('posts', [
-            "title" => "Blog",
+            "title" => "All Post",
+            "active" => "posts",
             "author" => "Sholikhudin",
             "posts" => Post::latest()->get()
         ]);
@@ -30,6 +32,7 @@ class PostController extends Controller
         return  view('post', [
             "title" => "Single Post",
             "author" => "Sholikhudin",
+            "active" => "posts",
 
             // "blog" => Post::find($post)
             "post" => $post
