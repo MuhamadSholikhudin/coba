@@ -2,6 +2,8 @@
 
 
 @section('container')
+
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Create new Post</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
@@ -14,25 +16,44 @@
   @csrf
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control" id="title" name="title" >
+    <input type="text" class="form-control @error('title') is-invalid  @enderror " id="title" name="title" value="{{ old('title') }}" >
     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+       @error('title') 
+       <div  class="invalid-feedback">
+      {{ $message }}.
+    </div>
+      @enderror
   </div>
   <div class="mb-3">
     <label for="slug" class="form-label">Slug</label>
-    <input type="text" class="form-control" id="slug" name="slug" >
+    <input type="text" class="form-control @error('slug') is-invalid  @enderror" id="slug" name="slug" value="{{ old('slug') }}" >
+@error('slug') 
+       <div  class="invalid-feedback">
+      {{ $message }}.
+    </div>
+      @enderror
   </div>
   <div class="mb-3">
     <label for="category" class="form-label">Title</label>
-    <select class="form-select" id="category" name="category_id" aria-label="Default select example">
+    <select class="form-select" id="category " name="category_id" >
       @foreach ($categories as $category)       
-        <option value="{{ $category->category_id }}">{{ $category->name }}</option>
+      @if(old('category_id') == $category->id)
+        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+        @else
+        <option value="{{ $category->id }}" >{{ $category->name }}</option>
+        @endif
       @endforeach
     </select>
   </div>
   <div class="mb-3">
     <label for="body" class="form-label">Body</label>
-      <input id="body" type="hidden" name="body">
+      <input id="body" type="hidden" name="body" value="{{ old('body') }}" >
   <trix-editor input="body"></trix-editor>
+  @error('slug') 
+       <p  class="invalid-feedback">
+      {{ $message }}.
+       </p>
+      @enderror
   </div>
   <button type="submit" class="btn btn-primary">Create Post</button>
 </form>

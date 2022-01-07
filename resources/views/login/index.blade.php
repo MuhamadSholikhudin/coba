@@ -32,7 +32,7 @@
     {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
 
     <div class="form-floating">
-      <input type="email" class="form-control  @error('email') is-invalid  @enderror id="email" name="email" value="" placeholder="name@example.com" value="{{ old('email') }}" autofocus required>
+      <input type="email" class="form-control  @error('email') is-invalid  @enderror id="email" name="email"  placeholder="name@example.com" value="{{ old('email') }}" autofocus required>
       <label for="email">Email address</label>
 
                         @error('email') 

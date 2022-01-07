@@ -12,6 +12,15 @@
               <a href="/dashboard/posts/create" class="btn btn-primary mb-3">
               Create new Post
               </a>
+
+              @if(session()->has('success'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>
+          {{ session('success') }}
+        </strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
         <table class="table table-striped table-sm">
           <thead>
             <tr>
