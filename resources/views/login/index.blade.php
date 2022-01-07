@@ -13,21 +13,37 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
+@if(session()->has('loginError'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>
+          {{ session('loginError') }}
+
+        </strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
     <main class="form-signin">
       
         <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
 
-  <form>
+  <form action="/login" method="POST" enctype="application/x-www-form-urlencoded">
+    @csrf
     {{-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" name="username" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      <input type="email" class="form-control  @error('email') is-invalid  @enderror id="email" name="email" value="" placeholder="name@example.com" value="{{ old('email') }}" autofocus required>
+      <label for="email">Email address</label>
+
+                        @error('email') 
+       <div  class="invalid-feedback">
+      {{ $message }}.
+    </div>
+      @enderror
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <input type="password" class="form-control" id="password" name="password"  placeholder="Password" required>
+      <label for="password">Password</label>
     </div>
 
     {{-- <div class="checkbox mb-3">

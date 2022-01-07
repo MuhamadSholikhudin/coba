@@ -19,31 +19,48 @@
           <a class="nav-link" {{ ($active === "categories") ? 'active' : '' }} " href="/categories">Categories</a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+
 
 
       </ul>
 
       <ul class="navbar-nav ms-auto">
+               
+        @auth
+ <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome Back, {{ auth()->user()->name }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item nav-link" href="/dashboard"> <i class="bi bi-layout-text-sidebar"></i>My Dashboard</a></li>
+            <li><hr></li>
+            <li>
+              <form action="/logout" method="post">
+@csrf
+              
+                <button type="submit" class="dropdown-item nav-link"> <i class="bi bi-box-arrow-right"></i> Logout</button>
+              </form>
+              {{-- <a class="dropdown-item nav-link" href="/logout"> <i class="bi bi-box-arrow-right"></i>Logout</a></li> --}}
+
+          </ul>
+        </li>
+        @else
 <li class="nav-items">
-<a href="/login" class="nav-link {{ ($active === "login") ? 'active' : '' }} "">
-  <i class="bi bi-box-arrow-in-right"></I>
-  Login</a>
-</li>
-<li class="nav-items">
-<a href="/register" class="nav-link {{ ($active === "register") ? 'active' : '' }} "">
-  <i class="bi bi-box-arrow-in-right"></I>
-  Register</a>
-</li>
+        <a href="/login" class="nav-link {{ ($active === "login") ? 'active' : '' }} "">
+          <i class="bi bi-box-arrow-in-right"></I>
+          Login</a>
+        </li>
+        @endauth
+        {{-- <li class="nav-items">
+        <a href="/login" class="nav-link {{ ($active === "login") ? 'active' : '' }} "">
+          <i class="bi bi-box-arrow-in-right"></I>
+          Login</a>
+        </li>
+        <li class="nav-items">
+        <a href="/register" class="nav-link {{ ($active === "register") ? 'active' : '' }} "">
+          <i class="bi bi-box-arrow-in-right"></I>
+          Register</a>
+        </li> --}}
       </ul>
     </div>
   </div>
