@@ -44,7 +44,14 @@
                   <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-warning">
                 <span data-feather="edit"></span>
                 </a>
-                  <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-danger">
+<form action="/dashboard/posts/{{ $post->slug }}" class="d-inline">
+  @method('delete')
+  @csrf
+<button class="badge bg-danger boeder-0" onclick="return confirm(' Are you sur?')"> 
+<span data-feather="x-circle"></span>
+</button>
+</form>
+                  <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-danger">
                 <span data-feather="x-circle"></span>
                 </a>
                 
