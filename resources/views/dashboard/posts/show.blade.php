@@ -19,8 +19,14 @@
         <a href="" class="btn btn-danger mb-2">
           <span data-feather="x-circle"></span>
 Delete        </a>
-              <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" class="img-fluid mb-3" alt="{{ $post->category->name }}">
 
+@if($post->image)
+<div style="max-height:400px; overflow:hidden;">
+<img src="{{ assets('storage/').$post->image }}" class="img-fluid mb-3" alt="{{ $post->category->name }}">
+</div>
+@else
+              <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}" class="img-fluid mb-3" alt="{{ $post->category->name }}">
+@endif
         {{-- <p> By <a href="/posts?author={{ $post->author->username }}" class="text-decoration-none"> {{ $post->author->name }}</a> 
         in <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a>
         </p> --}}
