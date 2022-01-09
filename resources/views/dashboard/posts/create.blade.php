@@ -45,6 +45,15 @@
       @endforeach
     </select>
   </div>
+<div class="mb-3">
+  <label for="image" class="form-label">Upload image</label>
+  <input class="form-control" type="file" name="image" id="image">
+</div>
+     @error('image') 
+       <div  class="invalid-feedback">
+      {{ $message }}.
+       </div>
+      @enderror
   <div class="mb-3">
     <label for="body" class="form-label">Body</label>
       <input id="body" type="hidden" name="body" value="{{ old('body') }}" >
