@@ -21,8 +21,13 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Post::factory(10)->create();
         // \App\Models\Category::factory(10)->create();
 
-        // User::factory(5)->craeted();
+        User::create([
+            'username' => 'sholikhudin',
+            'email' => 'muhammadsholihudin18@gmail.com',
+            'password' => bcrypt('password')
+        ]);
 
+        User::factory(3)->craeted();
         Category::create([
             'name' => 'Web Progamming',
             'slug' => 'Web-Progamming'
