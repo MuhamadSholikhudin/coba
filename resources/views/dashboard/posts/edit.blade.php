@@ -12,7 +12,7 @@
 
 <div class="col-lg-8">
 
-<form action="/dashboard/posts/{{ $post->slug }}" method="POST">
+<form action="/dashboard/posts/{{ $post->slug }}" method="POST" enctype="multipart/form-data">
   @method('put')
 @csrf
   <div class="mb-3">
@@ -46,6 +46,30 @@
       @endforeach
     </select>
   </div>
+
+      @if($post->slug)
+      
+      <img src="{{ asset('storage')."/" . $post->image }}" id="img-preview" alt="{{  $post->image  }}" class="img-preview img-fluid mb-3 col-sm-5">
+      @else 
+            <img id="img-preview" class="img-preview img-fluid mb-3 col-sm-5">
+      @endif
+
+    <div class="mb-3">
+        <label for="image" class="form-label">Upload image</label>
+        <input class="form-control" type="file" name="image"  id="image"  >
+        <input class="form-control" type="text" name="oldImage" value="{{ $post->image }}"  >
+        @error('image') 
+        <div  class="invalid-feedback">
+          {{ $message }}.
+        </div>
+        @enderror
+    </div>
+
+<div class="mb-3">
+  {{-- <input  id="input" type="file"/>
+<img id="box"  style="width: 30%;height: 30%"/> --}}
+
+</div>
   <div class="mb-3">
     <label for="body" class="form-label">Body</label>
       <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}" >
@@ -76,5 +100,19 @@ document.addEventListener('trix-file-accept', function(e){
 });
 
 
+inputBox = document.getElementById("image"); // Mengambil elemen tempat Input gambar
+
+ inputBox.addEventListener('change',function(input){ // Jika tempat Input Gambar berubah
+
+  var box = document.getElementById("img-preview"); // mengambil elemen box
+  var img = input.target.files; // mengambil gambar
+
+  var reader = new FileReader(); // memanggil pembaca file/gambar
+  reader.onload = function(e){ // ketika sudah ada
+   box.setAttribute('src',e.target.result); // membuat alamat gambar
+  }
+  reader.readAsDataURL(img[0]); // menampilkan gambar
+ }
+); // manderser.blogspot.com
 </script>
 @endsection
